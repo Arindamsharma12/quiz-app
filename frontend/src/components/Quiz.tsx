@@ -10,7 +10,7 @@ import { useState } from 'react';
 export function Quiz({quizData, socket, userId, problemId, roomId}: {
     quizData: {
         title: string;
-        options: string[];
+        options: {title:string}[];
     },
     socket: any;
     roomId: string;
@@ -25,7 +25,7 @@ export function Quiz({quizData, socket, userId, problemId, roomId}: {
       <div className="flex w-full justify-center">
         <div className="">
             <SingleQuiz
-                choices={quizData.options.map(x => x.title)}
+                choices={quizData.options.map((x) => x.title)}
                 title={quizData.title}
                 imageURL={""}
                 setSelected={setSubmission}

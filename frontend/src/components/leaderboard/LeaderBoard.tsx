@@ -4,8 +4,8 @@ export function LeaderBoard({leaderboardData}: {
     leaderboardData: {
         points: number,
         username: string,
-        profilePicture: string
-    }
+        profilePicture?: string
+    }[]
 }) {
 
     return (

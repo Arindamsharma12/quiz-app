@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { CurrentQuestion } from "./CurrentQuestion"
-import { LeaderBoard } from "./leaderboard/Leaderboard"
+import { LeaderBoard } from "./leaderboard/LeaderBoard"
 import { io } from "socket.io-client"
 import { Quiz } from "./Quiz"
 
@@ -56,7 +55,7 @@ export const User = ()=>{
   return <UserLoggedin code={code} name={name}></UserLoggedin>
 }
 
-export const UserLoggedin = ({name,code}:{name:any})=>{
+export const UserLoggedin = ({name,code}:{name:any,code:any})=>{
   const [socket,setSocket] = useState<null | any>(null);
   const roomId = code
   const [currentState,setCurrentState] = useState("not_started")
@@ -91,7 +90,7 @@ export const UserLoggedin = ({name,code}:{name:any})=>{
   }
   if(currentState === "question"){
     return <Quiz roomId={roomId} userId={userId} problemId={currentQuestion.id} quizData={{
-      title: currentQuestion.description,
+      title: currentQuestion.title,
       options:currentQuestion.options,
     }} socket={socket}/>
   }
